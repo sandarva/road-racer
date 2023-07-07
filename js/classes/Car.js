@@ -6,7 +6,7 @@ class Car{
         this.height = height
 
         this.color = color
-        this.velocity = -5
+        this.velocity = -20
 
         this.health = 3
         this.lives = 3
@@ -14,7 +14,8 @@ class Car{
 
     draw(){
         context.fillStyle = this.color
-        context.fillRect(this.x, this.y, this.width, this.height)
+        // context.fillRect(this.x, this.y, this.width, this.height)
+        context.drawImage(carImg, this.x, this.y, this.width, this.height)
     }
 
     moveLeft(){
@@ -24,6 +25,16 @@ class Car{
 
     moveRight(){
         this.x -= this.velocity
+        this.draw()
+    }
+
+    moveUp(){
+        this.y += this.velocity
+        this.draw()
+    }
+
+    moveDown(){
+        this.y -= this.velocity
         this.draw()
     }
 
