@@ -33,8 +33,7 @@ function animate(){
 
     // gameover if car has 0 lives
     if(car.lives === 0){
-        cancelAnimationFrame(animationId)
-        gameState = 'gameover'
+        gameOver()
     }
 
     /**

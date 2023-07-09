@@ -66,3 +66,14 @@ function generateCoins(){
         COINS.push(coin)
     }, 5000)
 }
+
+/**
+ * This function halts the game
+ */
+function gameOver(){
+    clearInterval(coinIntervalId)
+    clearInterval(enemyIntervalId1)
+    clearInterval(enemyIntervalId2)
+    cancelAnimationFrame(animationId)
+    gameState = 'gameover'
+}
