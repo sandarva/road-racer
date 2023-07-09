@@ -7,21 +7,29 @@ canvas.width = innerWidth / 2
 
 const context = canvas.getContext('2d')
 
-
-// constants
 /**
- * enemies constants
+ * GLOBAL VARIABLES
  */
-//the height of the enemy
-// const height = 80
-// // the width of the enemy
-// const width = 30
-// // all the x coordinates the enemies can spawn in
-// const allX = [
-//     sideBarLeft.width + 20, 
-//     sideBarLeft.width + 80, 
-//     sideBarLeft.width + 150, 
-//     sideBarLeft.width + 215, 
-//     sideBarLeft.width + 285, 
-//     sideBarLeft.width + 350
-// ]
+// Variables
+let SCORE = 0
+let ENEMIES = []
+let COINS = []
+let animationId
+let enemyIntervalId1, enemyIntervalId2
+let coinIntervalId
+
+// Constants
+// The speed of the road and coin
+const SPEED = 3
+// The maximum health of the player in one life
+const MAX_HEALTH = 3
+// The maximum lives of the player
+const MAX_LIVES = 3
+// The height of the coin
+const COIN_HEIGHT = 30
+// The width of the coin
+const COIN_WIDTH = 30
+// The height of the enemy
+const ENEMY_HEIGHT = 80
+// The width of the enemy
+const ENEMY_WIDTH = 30

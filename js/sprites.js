@@ -1,13 +1,16 @@
+// Image of a single road
 const roadImg = new Image()
 roadImg.src = './assets/images/road-new.png'
 
+// Image of the side bar in the left
 const sideBarLeftImg = new Image()
 sideBarLeftImg.src = './assets/images/sidebarleft.png'
 
+// Image of the side bar in the right
 const sideBarRightImg = new Image()
 sideBarRightImg.src = './assets/images/sidebarright.png'
 
-//Enemy trucks
+// Images of all the enemy trucks variants
 const truck1Img = new Image()
 truck1Img.src = './assets/images/truck1.png'
 
@@ -20,7 +23,7 @@ truck3Img.src = './assets/images/truck3.png'
 const truck4Img = new Image()
 truck4Img.src = './assets/images/truck4.png'
 
-// coin images
+// Images of all coin types
 const coin1Img = new Image()
 coin1Img.src = './assets/images/coin1.png'
 
@@ -30,5 +33,6 @@ coin5Img.src = './assets/images/coin5.png'
 const coin10Img = new Image()
 coin10Img.src = './assets/images/coin10.png'
 
+// Image of the player car
 const carImg = new Image()
-carImg.src = './assets/images/car1.png'
+carImg.src = './assets/images/player.png'

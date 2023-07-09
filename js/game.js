@@ -1,4 +1,3 @@
-let animationId
 function animate(){
     animationId = requestAnimationFrame(animate)
     context.fillStyle = 'gray'
@@ -29,7 +28,7 @@ function animate(){
     // if the health of the car decreases to 0 decrease life by 1
     if(car.health === 0){
         car.lives -= 1
-        car.health = 3
+        car.health = MAX_HEALTH
     }
 
     // gameover if car has 0 lives
@@ -42,7 +41,7 @@ function animate(){
      * all enemies rendering in canvas with collision
      * detection and remove it after it goes out of screen
      **/  
-    enemies.forEach((enemy, enemyIndex) => {
+    ENEMIES.forEach((enemy, enemyIndex) => {
         enemy.update()
 
         // collision detection for enemies and player
@@ -55,9 +54,7 @@ function animate(){
 
         // remove the enemy if it is outside the screen(canvas)
         if(enemy.y > canvas.height){
-            setTimeout(() => {
-                enemies.splice(enemyIndex, 1)
-            }, 0)
+            removeObject(enemyIndex, ENEMIES)
         }
     })
 
@@ -65,21 +62,17 @@ function animate(){
      * all coins rendering in canvas with collision
      * detection and remove it after it goes out of screen
      **/  
-    coins.forEach((coin, coinIndex) => {
+    COINS.forEach((coin, coinIndex) => {
         coin.update()
 
         if(checkCollision(car, coin)){
             coin.increasePoints()
-            setTimeout(() => {
-                coins.splice(coinIndex, 1)
-            }, 0)
+            removeObject(coinIndex, COINS)
         }
 
         // remove the coin if it is outside the screen(canvas)
         if(coin.y > canvas.height){
-            setTimeout(() => {
-                coins.splice(coinIndex, 1)
-            }, 0)
+            removeObject(coinIndex, COINS)
         }
     })
 
