@@ -1,14 +1,12 @@
 let animationId
 function animate(){
-    // console.log(car);
     animationId = requestAnimationFrame(animate)
     context.fillStyle = 'gray'
     context.fillRect(0, 0, canvas.width, canvas.height)
-    // context.drawImage(roadImg, 50, 0, 200,canvas.height)
 
     sideBarLeft.draw()
     sideBarRight.draw()
-    road.draw()
+    road.update()
 
     /**
      * decrease health if car collides to the sidebars 
@@ -49,12 +47,9 @@ function animate(){
             car.x + car.width > enemy.x &&
             car.y + car.height > enemy.y
         ){
-            console.log('collided');
             car.decreaseHealth()
             car.x = canvas.width / 2 - 15
             car.y = canvas.height  - 100
-            // cancelAnimationFrame(animationId)
-            // gameState = 'gameover'
         }
 
         // remove the enemy if it is outside the screen(canvas)
