@@ -4,14 +4,14 @@ class Enemy{
         this.y = y
         this.width = width
         this.height = height
+        this.img = generateRandom([truck1Img, truck2Img, truck3Img, truck4Img])
 
         this.velocity = 0
-        this.speed = 3
+        this.speed = 5
     }
 
     draw(){
-        context.fillStyle = 'purple'
-        context.drawImage(truckImg, this.x, this.y, this.width, this.height)
+        context.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
 
     update(){

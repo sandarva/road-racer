@@ -2,7 +2,7 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-function generateRandomNumber(allowedValues) {
+function generateRandom(allowedValues) {
     const randomIndex = Math.floor(Math.random() * allowedValues.length);
     return allowedValues[randomIndex];
 }
@@ -23,7 +23,7 @@ function generateEnemies(){
             sideBarLeft.width + 285, 
             sideBarLeft.width + 350
         ]
-        const posX = generateRandomNumber(allX)
+        const posX = generateRandom(allX)
         // enemy
         const enemy = new Enemy(posX, -height, width, height)
         enemies.push(enemy)
@@ -38,7 +38,7 @@ function generateEnemies(){
             sideBarLeft.width + 285, 
             sideBarLeft.width + 350
         ]
-        const posX = generateRandomNumber(allX)
+        const posX = generateRandom(allX)
         // enemy
         const enemy = new Enemy(posX, -height, width, height)
         enemies.push(enemy)
