@@ -21,8 +21,9 @@ function animate(){
         car.y + car.height > canvas.height
     ){
         car.decreaseHealth()
-        car.x = canvas.width / 2 - 15
-        car.y = canvas.height  - 100
+        console.log("health: ", car.health);
+        console.log("lives: ", car.lives);
+        car.sendToInitalPos()
     }
 
     // if the health of the car decreases to 0 decrease life by 1
@@ -37,25 +38,47 @@ function animate(){
         gameState = 'gameover'
     }
 
+    /**
+     * all enemies rendering in canvas with collision
+     * detection and remove it after it goes out of screen
+     **/  
     enemies.forEach((enemy, enemyIndex) => {
         enemy.update()
 
         // collision detection for enemies and player
-        if(
-            car.y < enemy.y + enemy.height &&
-            car.x < enemy.x + enemy.width &&
-            car.x + car.width > enemy.x &&
-            car.y + car.height > enemy.y
-        ){
+        if(checkCollision(car, enemy)){
             car.decreaseHealth()
-            car.x = canvas.width / 2 - 15
-            car.y = canvas.height  - 100
+            console.log("health: ", car.health);
+            console.log("lives: ", car.lives);
+            car.sendToInitalPos()
         }
 
         // remove the enemy if it is outside the screen(canvas)
         if(enemy.y > canvas.height){
             setTimeout(() => {
                 enemies.splice(enemyIndex, 1)
+            }, 0)
+        }
+    })
+
+    /**
+     * all coins rendering in canvas with collision
+     * detection and remove it after it goes out of screen
+     **/  
+    coins.forEach((coin, coinIndex) => {
+        coin.update()
+
+        if(checkCollision(car, coin)){
+            coin.increasePoints()
+            setTimeout(() => {
+                coins.splice(coinIndex, 1)
+            }, 0)
+        }
+
+        // remove the coin if it is outside the screen(canvas)
+        if(coin.y > canvas.height){
+            setTimeout(() => {
+                coins.splice(coinIndex, 1)
             }, 0)
         }
     })

@@ -31,3 +31,4 @@ addEventListener('keydown', (event) => {
 // const enemy1 = new Enemy(sideBarLeft.width + 10, 0, 30, 50)
 animate()
 generateEnemies()
+generateCoins()

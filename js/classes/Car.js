@@ -46,6 +46,11 @@ class Car{
         this.life -= 1
     }
 
+    sendToInitalPos(){
+        this.x = canvas.width / 2 - 15
+        this.y = canvas.height  - 100
+    }
+
     update(){
         this.draw()
     }
