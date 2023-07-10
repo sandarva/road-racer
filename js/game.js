@@ -1,6 +1,5 @@
 function animate(){
     animationId = requestAnimationFrame(animate)
-    context.fillStyle = 'gray'
 
     context1.fillStyle = 'gray'
     context1.filter = 'blur(3px)';
@@ -140,12 +139,4 @@ function animate(){
     displayScore()
 }
 
-function pauseGame(){
-    gameState = 'pause'
-    cancelAnimationFrame(animationId)
-    clearInterval(enemyIntervalId1)
-    clearInterval(enemyIntervalId2)
-    clearInterval(coinIntervalId)
-}
-
-let gameState = "running"
+let gameState = "initial-game"

@@ -22,6 +22,7 @@ let OBSTACLES = []
 let animationId
 let enemyIntervalId1, enemyIntervalId2
 let coinIntervalId
+let preAnimationId
 
 // Constants
 // The speed of the road and coin

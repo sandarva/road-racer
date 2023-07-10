@@ -24,8 +24,6 @@ function removeObject(objectIndex, objectArr){
     objectArr.splice(objectIndex, 1)
 }
 
-const totalRoadWidth = (canvas.width - (sideBarLeft.width + sideBarRight.width))
-const singleRoadWidth = totalRoadWidth / 3
 /**
  * GLOBAL X POSITION FOR ENEMIES AND COINS
  */
@@ -39,7 +37,6 @@ const allX = [
     (road.x + road.width * 2) + firstLane, 
     (road.x + road.width * 2) + secondLane, 
 ]
-
 
 // This function generates the enemy and push into enemies array
 function generateEnemies(){
@@ -101,12 +98,10 @@ function increaseScore(){
     SCORE += 5
 }
 
+// This function displays the score
 function displayScore(){
     context.font = '30px cursive'
     context.fillStyle = 'white' 
-    const textWidth = context1.measureText(this.text).width
-    const textX = this.x + (this.width - textWidth) / 2
-    const textY = this.y + (this.height + 12) / 2
     context.fillText(`SCORE: ${SCORE}`, 20, 50);
 }
 
@@ -121,14 +116,85 @@ function gameOver(){
     gameState = 'gameover'
 }
 
+// This function continues the game
 function startGame(){
-    requestAnimationFrame(animationId)
+    animate()
+    generateEnemies()
+    generateObstacle()
+    generateCoins()
+    gameState = 'running'
 }
 
+// This function pauses the game
+function pauseGame(){
+    gameState = 'paused'
+    cancelAnimationFrame(animationId)
+    clearInterval(enemyIntervalId1)
+    clearInterval(enemyIntervalId2)
+    clearInterval(coinIntervalId)
+}
+
+// This function halts the game and brings to the halting state
+function restartGame(){
+    cancelAnimationFrame(animationId)
+    clearInterval(coinIntervalId)
+    clearInterval(enemyIntervalId1)
+    clearInterval(enemyIntervalId2)
+    car.sendToInitalPos()
+    gameState = 'initial-game'
+}
+
+// This function initializes the game
 function init(){
+    cancelAnimationFrame(animationId)
+    clearInterval(coinIntervalId)
+    clearInterval(enemyIntervalId1)
+    clearInterval(enemyIntervalId2)
+
     SCORE = 0
     ENEMIES = []
     BULLETS = []
     COINS = []
     OBSTACLES = []
+
+    car.health = MAX_HEALTH
+    car.lives = MAX_LIVES
+    car.sendToInitalPos()
+
+    animate()
+    generateEnemies()
+    generateObstacle()
+    generateCoins()
+
+    gameState = 'running'
+}
+
+// This function animates the game screen when game is not played
+function preGameAnimation(){
+    preAnimationId = requestAnimationFrame(preGameAnimation)
+
+    context1.fillStyle = 'gray'
+    context1.filter = 'blur(3px)';
+    context1.drawImage(bgImage, 0, 0, canvas1.width, canvas1.height)
+    context1.filter = 'none';
+
+    startButton.draw()
+    restartButton.draw()
+    pauseButton.draw()
+    helpButton.draw()
+
+    sideBarLeft.update()
+    sideBarRight.update()
+    road.update()
+
+    car.draw()
+
+    // show full heart for each health
+    for(let i = 0; i < car.health; i++){
+        healthBar[i].draw(heartFullImg)
+    }
+
+    if(gameState === 'running'){
+        cancelAnimationFrame(preAnimationId)
+    }
 }

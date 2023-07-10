@@ -20,12 +20,29 @@ addEventListener('keydown', (event) => {
         car.moveDown()
     }
 
+    // hit with bullet
     if((event.code === 'Space' || event.code === 'KeyJ') && gameState === 'running'){
         generateBullet()
     }
 
+    // pause the game
     if(event.code === 'KeyP' && gameState === 'running'){
         pauseGame()
+    }
+
+    // restart the game
+    if(event.code === 'KeyR' && gameState === 'running'){
+        restartGame()
+    }
+
+    // start the game
+    if(event.code === 'Space' && (gameState === 'initial-game' || gameState === 'gameover')){
+        init()
+    }
+
+    // continue the game
+    if(event.code === 'Space' && gameState === 'paused'){
+        startGame()
     }
 })
 
@@ -61,9 +78,15 @@ canvas1.addEventListener("click", function(event) {
     const mouseY = event.clientY - rect.top;
 
     if (startButton.isClicked(mouseX, mouseY)) {
-        console.log("Game Start");
-    } else if (restartButton.isClicked(mouseX, mouseY)) {
+        if(gameState === 'initial-game' || gameState === 'gameover'){
+            init()
+        }
+        if(gameState === 'paused'){
+            startGame()
+        }
+    } else if (restartButton.isClicked(mouseX, mouseY) && gameState !== 'initial-game') {
         console.log("Restart Game");
+        restartGame()
     } else if (pauseButton.isClicked(mouseX, mouseY) && gameState === 'running') {
         pauseGame()
     } else if (helpButton.isClicked(mouseX, mouseY)) {
@@ -71,7 +94,4 @@ canvas1.addEventListener("click", function(event) {
     }
 });
 
-animate()
-generateEnemies()
-generateObstacle()
-generateCoins()
+preGameAnimation()
