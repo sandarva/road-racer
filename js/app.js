@@ -1,3 +1,15 @@
+const close = document.querySelector('#close')
+const help = document.querySelector('.help')
+close.addEventListener('click', () => {
+    help.classList.add('display-none')
+})
+
+const startGameBtn = document.querySelector('#start')
+startGameBtn.addEventListener('click', () => {
+    help.classList.add('display-none')
+    init()
+})
+
 // Event Listener to see if the player has pressed the movement keys
 addEventListener('keydown', (event) => {
     // move car to the left on left arrow press
@@ -44,6 +56,10 @@ addEventListener('keydown', (event) => {
     if(event.code === 'Space' && gameState === 'paused'){
         startGame()
     }
+
+    if(event.codee === 'KeyH' && gameState !== 'running'){
+        help.classList.remove('display-none')
+    }
 })
 
 // Event Listener to see if the player is released the movement keys
@@ -85,12 +101,11 @@ canvas1.addEventListener("click", function(event) {
             startGame()
         }
     } else if (restartButton.isClicked(mouseX, mouseY) && gameState !== 'initial-game') {
-        console.log("Restart Game");
         restartGame()
     } else if (pauseButton.isClicked(mouseX, mouseY) && gameState === 'running') {
         pauseGame()
     } else if (helpButton.isClicked(mouseX, mouseY)) {
-        console.log("Show Help");
+        help.classList.remove('display-none')
     }
 });
 

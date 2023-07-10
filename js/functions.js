@@ -136,12 +136,7 @@ function pauseGame(){
 
 // This function halts the game and brings to the halting state
 function restartGame(){
-    cancelAnimationFrame(animationId)
-    clearInterval(coinIntervalId)
-    clearInterval(enemyIntervalId1)
-    clearInterval(enemyIntervalId2)
-    car.sendToInitalPos()
-    gameState = 'initial-game'
+    init()
 }
 
 // This function initializes the game
