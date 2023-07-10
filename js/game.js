@@ -71,7 +71,6 @@ function animate(){
                 removeObject(enemyIndex, ENEMIES)
                 removeObject(bulletIndex, BULLETS)
                 increaseScore()
-                console.log(SCORE);
             }
         })
     })
@@ -136,7 +135,9 @@ function animate(){
     })
 
     car.update()
+    displayLives()
     displayScore()
+    displayHighScore()
 }
 
 let gameState = "initial-game"

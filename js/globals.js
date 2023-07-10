@@ -45,3 +45,11 @@ const OBSTACLE_HEIGHT = 30
 const OBSTACLE_WIDTH = 80
 // The starting position of the objects
 const POS_Y = -10
+// the highscore from local storage
+let HIGHSCORE
+if(localStorage.getItem('highscore')){
+    HIGHSCORE = localStorage.getItem('highscore')
+}else{
+    localStorage.setItem('highscore', 0) 
+    HIGHSCORE = localStorage.getItem('highscore')
+}

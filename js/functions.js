@@ -69,7 +69,7 @@ function generateCoins(){
 
 // This function generates the bullet and push into bullets array
 function generateBullet(){
-    const bullet = new Bullet(car.x + 2, car.y - 5, 30, 30)
+    const bullet = new Bullet(car.x + 2, car.y - 5, 30, 50)
     BULLETS.push(bullet)
 }
 
@@ -113,6 +113,13 @@ function gameOver(){
     clearInterval(enemyIntervalId1)
     clearInterval(enemyIntervalId2)
     cancelAnimationFrame(animationId)
+
+    context.font = '32px cursive'
+    context.fillStyle = 'white'
+    const textWidth = context.measureText('GAMEOVER').width 
+    context.fillText(`GAMEOVER`, (canvas.width / 2) - (textWidth / 2), canvas.height / 2 - 16);
+    const scoreWidth = context.measureText(`YOUR SCORE IS : ${SCORE}`).width 
+    context.fillText(`YOUR SCORE IS : ${SCORE}`, (canvas.width / 2) - (scoreWidth / 2), canvas.height / 2 + 60);
     gameState = 'gameover'
 }
 
@@ -192,4 +199,21 @@ function preGameAnimation(){
     if(gameState === 'running'){
         cancelAnimationFrame(preAnimationId)
     }
+}
+
+function displayHighScore(){
+    HIGHSCORE = localStorage.getItem('highscore')
+    if(SCORE > HIGHSCORE){
+        localStorage.setItem('highscore', SCORE)
+        HIGHSCORE = localStorage.getItem('highscore')
+    }
+    context1.font = '24px cursive'
+    context1.fillStyle = 'white' 
+    context1.fillText(`HIGHSCORE: ${HIGHSCORE}`, 20, canvas.height - 30);
+}
+
+function displayLives(){
+    context1.font = '24px cursive'
+    context1.fillStyle = 'white' 
+    context1.fillText(`LIVES: ${car.lives}`, 20, canvas.height - 90 - 24);
 }
