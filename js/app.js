@@ -23,6 +23,10 @@ addEventListener('keydown', (event) => {
     if((event.code === 'Space' || event.code === 'KeyJ') && gameState === 'running'){
         generateBullet()
     }
+
+    if(event.code === 'KeyP' && gameState === 'running'){
+        pauseGame()
+    }
 })
 
 // Event Listener to see if the player is released the movement keys
@@ -60,8 +64,8 @@ canvas1.addEventListener("click", function(event) {
         console.log("Game Start");
     } else if (restartButton.isClicked(mouseX, mouseY)) {
         console.log("Restart Game");
-    } else if (pauseButton.isClicked(mouseX, mouseY)) {
-        console.log("Pause Game");
+    } else if (pauseButton.isClicked(mouseX, mouseY) && gameState === 'running') {
+        pauseGame()
     } else if (helpButton.isClicked(mouseX, mouseY)) {
         console.log("Show Help");
     }

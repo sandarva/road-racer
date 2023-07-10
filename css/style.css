@@ -9,12 +9,8 @@
     align-items: center;
     justify-content: center;
     position: relative;
-}
-
-#canvas{
-    border: 1px solid red;
-}
-
-#canvas1{
-    border: 1px solid black;
+    background-image: url('../assets/images/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

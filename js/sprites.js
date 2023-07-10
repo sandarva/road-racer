@@ -51,3 +51,7 @@ bulletImg.src = './assets/images/bullet.png'
 // Image of the obstacle
 const obstacleImg = new Image()
 obstacleImg.src = './assets/images/obstacle.png'
+
+// Background Image
+const bgImage = new Image()
+bgImage.src = './assets/images/bgcanvas.jpg'

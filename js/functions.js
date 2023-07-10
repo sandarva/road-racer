@@ -70,12 +70,13 @@ function generateCoins(){
     }, 5000)
 }
 
+// This function generates the bullet and push into bullets array
 function generateBullet(){
     const bullet = new Bullet(car.x + 2, car.y - 5, 30, 30)
     BULLETS.push(bullet)
 }
 
-let OBSTACLES = []
+// This function generates obstacles and push into obstacle array
 function generateObstacle(){
     obstacleIntervalId1 = setInterval(() => {
         const firstLane = 15
@@ -95,8 +96,18 @@ function generateObstacle(){
     }, 2000)
 }
 
+// This function increases the score by 5
 function increaseScore(){
     SCORE += 5
+}
+
+function displayScore(){
+    context.font = '30px cursive'
+    context.fillStyle = 'white' 
+    const textWidth = context1.measureText(this.text).width
+    const textX = this.x + (this.width - textWidth) / 2
+    const textY = this.y + (this.height + 12) / 2
+    context.fillText(`SCORE: ${SCORE}`, 20, 50);
 }
 
 /**
@@ -108,4 +119,16 @@ function gameOver(){
     clearInterval(enemyIntervalId2)
     cancelAnimationFrame(animationId)
     gameState = 'gameover'
+}
+
+function startGame(){
+    requestAnimationFrame(animationId)
+}
+
+function init(){
+    SCORE = 0
+    ENEMIES = []
+    BULLETS = []
+    COINS = []
+    OBSTACLES = []
 }

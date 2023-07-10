@@ -1,10 +1,11 @@
 function animate(){
     animationId = requestAnimationFrame(animate)
     context.fillStyle = 'gray'
-    context.fillRect(0, 0, canvas.width, canvas.height)
 
     context1.fillStyle = 'gray'
-    context1.fillRect(0, 0, canvas.width, canvas.height)
+    context1.filter = 'blur(3px)';
+    context1.drawImage(bgImage, 0, 0, canvas1.width, canvas1.height)
+    context1.filter = 'none';
 
     startButton.draw()
     restartButton.draw()
@@ -136,6 +137,15 @@ function animate(){
     })
 
     car.update()
+    displayScore()
+}
+
+function pauseGame(){
+    gameState = 'pause'
+    cancelAnimationFrame(animationId)
+    clearInterval(enemyIntervalId1)
+    clearInterval(enemyIntervalId2)
+    clearInterval(coinIntervalId)
 }
 
 let gameState = "running"

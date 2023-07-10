@@ -18,6 +18,7 @@ let SCORE = 0
 let ENEMIES = []
 let BULLETS = []
 let COINS = []
+let OBSTACLES = []
 let animationId
 let enemyIntervalId1, enemyIntervalId2
 let coinIntervalId
