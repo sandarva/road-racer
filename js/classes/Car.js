@@ -5,9 +5,21 @@
  * y: the initial y position of the player
  * width: the width of the player car
  * height: the height of the player car
+ * 
  * speed: the number of pixels the car moves in a direction
+ * 
  * health: the health of the car [MAX_HEALTH]
  * lives: the health of the car [MAX_LIVES]
+ * 
+ * isVisible: to determine if the car is rendered or not
+ * isInvincible: to determine if the car is invincible or not
+ * isInvincibleInterval: the interval id of the isInvincible
+ * invincibleDuration: the duration till which the player is invincible
+ * 
+ * isMovingLeft: to determine if the player is pressing the movement key left
+ * isMovingRight: to determine if the player is pressing the movement key right
+ * isMovingUp: to determine if the player is pressing the movement key up
+ * isMovingDown: to determine if the player is pressing the movement key down
  */
 class Car{
     constructor(x, y, width, height){
@@ -16,7 +28,7 @@ class Car{
         this.width = width
         this.height = height
         
-        this.speed = -20
+        this.speed = -10
 
         this.health = 3
         this.lives = 3
@@ -25,6 +37,11 @@ class Car{
         this.isInvincible = false
         this.isInvincibleInterval = null
         this.invincibleDuration = 3000
+
+        this.isMovingLeft = false
+        this.isMovingRight = false
+        this.isMovingUp = false
+        this.isMovingDown = false
     }
 
     // This method renders the car/player
@@ -34,28 +51,78 @@ class Car{
         }
     }
 
+    // This method makes the player move smoothly
+    update(){
+        if (this.isMovingLeft) {
+            if(this.x < sideBarLeft.width && this.isInvincible){
+                this.isMovingLeft = false
+            }else{
+                this.x += this.speed;
+            }
+        }
+        if (this.isMovingRight) {
+            if(this.x + this.width > sideBarRight.x && this.isInvincible){
+                this.isMovingRight = false
+            }else{
+                this.x -= this.speed;
+            } 
+        }
+        if (this.isMovingUp) {
+            if(this.y < 0 && this.isInvincible){
+                this.isMovingUp = false
+            }else{
+                this.y += this.speed;
+            }
+        }
+        if (this.isMovingDown) {
+            if(this.y + this.height > canvas.height && this.isInvincible){
+                this.isMovingDown = false
+            }else{
+                this.y -= this.speed;
+            }
+        }
+
+        this.draw();
+    }
+
     // This method moves the car left
     moveLeft(){
-        this.x += this.speed
-        this.draw()
+        this.isMovingLeft = true
+    }
+
+    // This method stops the car from moving left
+    stopLeft(){
+        this.isMovingLeft = false
     }
 
     // This method moves the car right
     moveRight(){
-        this.x -= this.speed
-        this.draw()
+        this.isMovingRight = true
+    }
+
+    // This method stops the car from moving right
+    stopRight(){
+        this.isMovingRight = false
     }
 
     // This method moves the car up
     moveUp(){
-        this.y += this.speed
-        this.draw()
+        this.isMovingUp = true
+    }
+
+    // This method stops the car from moving up
+    stopUp(){
+        this.isMovingUp = false
     }
 
     //This method moves the car down
     moveDown(){
-        this.y -= this.speed
-        this.draw()
+        this.isMovingDown = true
+    }
+
+    // This method stops the car from moving down
+    stopDown(){
+        this.isMovingDown = false
     }
 
     // This method decreases the health of car in case of collison
@@ -80,7 +147,7 @@ class Car{
         }
     }
 
-    // THis method make the player invincible for some time
+    // This method make the player invincible for some time
     makeInvincible(){
         if(!this.isInvincible){
             this.isInvincible = true

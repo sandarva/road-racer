@@ -14,10 +14,8 @@ function animate(){
      * Collision detection for sidebars
      **/
     if(
-        car.x < sideBarLeft.width || 
-        car.x + car.width > sideBarRight.x ||
-        car.y < 0 ||
-        car.y + car.height > canvas.height
+        checkCollision(car, sideBarLeft) || 
+        checkCollision(car, sideBarRight)
     ){
         car.decreaseHealth()
         console.log("health: ", car.health);
@@ -77,7 +75,7 @@ function animate(){
         }
     })
 
-    car.draw()
+    car.update()
 }
 
 let gameState = "running"

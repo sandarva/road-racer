@@ -35,8 +35,7 @@ class Road{
         this.y += this.speed;
     
         if (this.y >= this.height) {
-            const remainingHeight = this.y % this.height;
-            this.y = -remainingHeight;
+            this.y = 0
         }
     
         this.draw();
