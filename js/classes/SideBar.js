@@ -14,6 +14,8 @@ class SideBar{
         this.y = y
         this.width = width
         this.height = height
+
+        this.speed = SPEED
         
         this.img = img
     }
@@ -22,6 +24,16 @@ class SideBar{
     draw(){
         context.fillStyle = "green"
         context.drawImage(this.img, this.x, this.y, this.width, this.height)
+        context.drawImage(this.img, this.x, this.y - this.height, this.width, this.height)
+    }
+
+    // This method gives the sidebar a moving effect
+    update(){
+        this.y += this.speed
+        if (this.y >= this.height) {
+            this.y = 0
+        }
+        this.draw()
     }
 }
 

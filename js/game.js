@@ -6,8 +6,8 @@ function animate(){
     context1.fillStyle = 'gray'
     context1.fillRect(0, 0, canvas.width, canvas.height)
 
-    sideBarLeft.draw()
-    sideBarRight.draw()
+    sideBarLeft.update()
+    sideBarRight.update()
     road.update()
 
     /**
@@ -97,7 +97,7 @@ function animate(){
     for(let i = car.health; i < MAX_HEALTH; i++){
         healthBar[i].draw(heartEmptyImg)
     }
-    
+
     BULLETS.forEach((bullet, bulletIndex) => {
         bullet.shoot()
 
