@@ -36,3 +36,10 @@ coin10Img.src = './assets/images/coin10.png'
 // Image of the player car
 const carImg = new Image()
 carImg.src = './assets/images/player.png'
+
+// Image of heart i.e. health
+const heartFullImg = new Image()
+heartFullImg.src = './assets/images/heart-full.png'
+
+const heartEmptyImg = new Image()
+heartEmptyImg.src = './assets/images/heart-empty.png'

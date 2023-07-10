@@ -3,6 +3,9 @@ function animate(){
     context.fillStyle = 'gray'
     context.fillRect(0, 0, canvas.width, canvas.height)
 
+    context1.fillStyle = 'gray'
+    context1.fillRect(0, 0, canvas.width, canvas.height)
+
     sideBarLeft.draw()
     sideBarRight.draw()
     road.update()
@@ -76,6 +79,13 @@ function animate(){
     })
 
     car.update()
+    for(let i = 0; i < car.health; i++){
+        healthBar[i].draw(heartFullImg)
+    }
+
+    for(let i = car.health; i < MAX_HEALTH; i++){
+        healthBar[i].draw(heartEmptyImg)
+    }
 }
 
 let gameState = "running"

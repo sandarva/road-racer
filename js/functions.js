@@ -26,17 +26,22 @@ function removeObject(objectIndex, objectArr){
     }, 0)
 }
 
+const totalRoadWidth = (canvas.width - (sideBarLeft.width + sideBarRight.width))
+const singleRoadWidth = totalRoadWidth / 3
 /**
  * GLOBAL X POSITION FOR ENEMIES AND COINS
  */
+const firstLane = 30
+const secondLane = 140
 const allX = [
-    sideBarLeft.width + 20, 
-    sideBarLeft.width + 80, 
-    sideBarLeft.width + 150, 
-    sideBarLeft.width + 215, 
-    sideBarLeft.width + 285, 
-    sideBarLeft.width + 350
+    road.x + firstLane, 
+    road.x + secondLane, 
+    road.x + road.width + firstLane,
+    road.x + road.width + secondLane,
+    (road.x + road.width * 2) + firstLane, 
+    (road.x + road.width * 2) + secondLane, 
 ]
+
 
 // This function generates the enemy and push into enemies array
 function generateEnemies(){
