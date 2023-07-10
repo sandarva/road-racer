@@ -48,6 +48,25 @@ addEventListener('keyup', (event) => {
     }
 })
 
+canvas1.addEventListener("click", function(event) {
+    // To get the x and y of the canvas i.e. the distance from the x and y of browser 
+    const rect = canvas1.getBoundingClientRect();
+    // The x position of mouse in the canvas
+    const mouseX = event.clientX - rect.left;
+    // The y position of mouse in the canvas
+    const mouseY = event.clientY - rect.top;
+
+    if (startButton.isClicked(mouseX, mouseY)) {
+        console.log("Game Start");
+    } else if (restartButton.isClicked(mouseX, mouseY)) {
+        console.log("Restart Game");
+    } else if (pauseButton.isClicked(mouseX, mouseY)) {
+        console.log("Pause Game");
+    } else if (helpButton.isClicked(mouseX, mouseY)) {
+        console.log("Show Help");
+    }
+});
+
 animate()
 generateEnemies()
 generateCoins()

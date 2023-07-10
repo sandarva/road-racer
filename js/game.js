@@ -6,6 +6,11 @@ function animate(){
     context1.fillStyle = 'gray'
     context1.fillRect(0, 0, canvas.width, canvas.height)
 
+    startButton.draw()
+    restartButton.draw()
+    pauseButton.draw()
+    helpButton.draw()
+
     sideBarLeft.update()
     sideBarRight.update()
     road.update()
@@ -23,8 +28,8 @@ function animate(){
         car.y < 0
     ){
         car.decreaseHealth()
-        console.log("health: ", car.health);
-        console.log("lives: ", car.lives);
+        // console.log("health: ", car.health);
+        // console.log("lives: ", car.lives);
         car.sendToInitalPos()
         car.makeInvincible()
     }
@@ -50,8 +55,8 @@ function animate(){
         // collision detection for enemies and player
         if(checkCollision(car, enemy)){
             car.decreaseHealth()
-            console.log("health: ", car.health);
-            console.log("lives: ", car.lives);
+            // console.log("health: ", car.health);
+            // console.log("lives: ", car.lives);
             car.sendToInitalPos()
             car.makeInvincible()
         }
