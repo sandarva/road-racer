@@ -46,14 +46,14 @@ function generateEnemies(){
     enemyIntervalId1 = setInterval(() => {
         const posX = generateRandom(allX)
         // enemy
-        const enemy = new Enemy(posX, -ENEMY_HEIGHT, ENEMY_WIDTH, ENEMY_HEIGHT)
+        const enemy = new Enemy(posX, POS_Y, ENEMY_WIDTH, ENEMY_HEIGHT)
         ENEMIES.push(enemy)
     }, 1000)
 
     enemyIntervalId2 = setInterval(() => {
         const posX = generateRandom(allX)
         // enemy
-        const enemy = new Enemy(posX, -ENEMY_HEIGHT, ENEMY_WIDTH, ENEMY_HEIGHT)
+        const enemy = new Enemy(posX, POS_Y, ENEMY_WIDTH, ENEMY_HEIGHT)
         ENEMIES.push(enemy)
     }, 1500)
 }
@@ -65,15 +65,34 @@ function generateCoins(){
     coinIntervalId = setInterval(() => {
         const posX = generateRandom(allX)
         // coin
-        const coin = new Coin(posX, 50, COIN_WIDTH, COIN_HEIGHT)
+        const coin = new Coin(posX, POS_Y, COIN_WIDTH, COIN_HEIGHT)
         COINS.push(coin)
     }, 5000)
 }
 
-let BULLETS = []
 function generateBullet(){
     const bullet = new Bullet(car.x + 2, car.y - 5, 30, 30)
     BULLETS.push(bullet)
+}
+
+let OBSTACLES = []
+function generateObstacle(){
+    obstacleIntervalId1 = setInterval(() => {
+        const firstLane = 15
+        const secondLane = 120
+        const allXBlock = [
+            road.x + firstLane, 
+            road.x + secondLane, 
+            road.x + road.width + firstLane,
+            road.x + road.width + secondLane,
+            (road.x + road.width * 2) + firstLane, 
+            (road.x + road.width * 2) + secondLane, 
+        ]
+        const posX = generateRandom(allXBlock)
+        // obstacle
+        const obstacle = new Obstacle(posX, POS_Y, OBSTACLE_WIDTH, OBSTACLE_HEIGHT)
+        OBSTACLES.push(obstacle)
+    }, 2000)
 }
 
 function increaseScore(){

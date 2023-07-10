@@ -77,6 +77,26 @@ function animate(){
     })
 
     /**
+     * all obstacle rendering in canvas with collision
+     * detection and remove it after it goes out of screen
+     * 
+     * Game over if collided
+     **/
+    OBSTACLES.forEach((obstacle, obstacleIndex) => {
+        obstacle.update()
+
+        // collision detection for enemies and player
+        if(checkCollision(car, obstacle) && !car.isInvincible){
+            gameOver()
+        }
+
+        // remove the enemy if it is outside the screen(canvas)
+        if(obstacle.y > canvas.height){
+            removeObject(obstacleIndex, OBSTACLES)
+        }
+    })
+
+    /**
      * all coins rendering in canvas with collision
      * detection and remove it after it goes out of screen
      **/  
@@ -94,22 +114,28 @@ function animate(){
         }
     })
 
-    car.update()
+    // show full heart for each health
     for(let i = 0; i < car.health; i++){
         healthBar[i].draw(heartFullImg)
     }
-
+    
+    // show empty heart if health decreases
     for(let i = car.health; i < MAX_HEALTH; i++){
         healthBar[i].draw(heartEmptyImg)
     }
-
+    
+    /**
+     * all bullets rendering in canvas remove it after it goes out of screen
+     **/ 
     BULLETS.forEach((bullet, bulletIndex) => {
         bullet.shoot()
-
+        
         if(bullet.y < 0){
-            removeObject(bullet, BULLETS)
+            removeObject(bulletIndex, BULLETS)
         }
     })
+
+    car.update()
 }
 
 let gameState = "running"

@@ -47,3 +47,7 @@ heartEmptyImg.src = './assets/images/heart-empty.png'
 // Image of bullet
 const bulletImg = new Image()
 bulletImg.src = './assets/images/bullet.png'
+
+// Image of the obstacle
+const obstacleImg = new Image()
+obstacleImg.src = './assets/images/obstacle.png'

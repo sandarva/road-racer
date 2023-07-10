@@ -69,4 +69,5 @@ canvas1.addEventListener("click", function(event) {
 
 animate()
 generateEnemies()
+generateObstacle()
 generateCoins()

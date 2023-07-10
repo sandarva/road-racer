@@ -16,6 +16,7 @@ const context1 = canvas1.getContext('2d')
 // Variables
 let SCORE = 0
 let ENEMIES = []
+let BULLETS = []
 let COINS = []
 let animationId
 let enemyIntervalId1, enemyIntervalId2
@@ -36,3 +37,9 @@ const COIN_WIDTH = 30
 const ENEMY_HEIGHT = 100
 // The width of the enemy
 const ENEMY_WIDTH = 50
+// The height of the obstacle
+const OBSTACLE_HEIGHT = 30
+// The width of the obstacle
+const OBSTACLE_WIDTH = 80
+// The starting position of the objects
+const POS_Y = -10
