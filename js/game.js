@@ -23,6 +23,7 @@ function animate(){
         console.log("health: ", car.health);
         console.log("lives: ", car.lives);
         car.sendToInitalPos()
+        car.makeInvincible()
     }
 
     // if the health of the car decreases to 0 decrease life by 1
@@ -49,6 +50,7 @@ function animate(){
             console.log("health: ", car.health);
             console.log("lives: ", car.lives);
             car.sendToInitalPos()
+            car.makeInvincible()
         }
 
         // remove the enemy if it is outside the screen(canvas)

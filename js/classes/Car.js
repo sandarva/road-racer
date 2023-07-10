@@ -20,11 +20,18 @@ class Car{
 
         this.health = 3
         this.lives = 3
+
+        this.isVisible = true
+        this.isInvincible = false
+        this.isInvincibleInterval = null
+        this.invincibleDuration = 3000
     }
 
     // This method renders the car/player
     draw(){
-        context.drawImage(carImg, this.x, this.y, this.width, this.height)
+        if(this.isVisible){
+            context.drawImage(carImg, this.x, this.y, this.width, this.height)
+        }
     }
 
     // This method moves the car left
@@ -53,18 +60,40 @@ class Car{
 
     // This method decreases the health of car in case of collison
     decreaseHealth(){
-        this.health -= 1
+        if(!this.isInvincible){
+            this.health -= 1
+        }
     }
 
     // This method decreases the life of car in case health reaches 0
     decreaseLife(){
-        this.life -= 1
+        if(!this.isInvincible){
+            this.life -= 1
+        }
     }
 
     // This method sends the car to initial position
     sendToInitalPos(){
-        this.x = canvas.width / 2 - 15
-        this.y = canvas.height  - 100
+        if(!this.isInvincible){
+            this.x = canvas.width / 2 - 15
+            this.y = canvas.height  - 100
+        }
+    }
+
+    // THis method make the player invincible for some time
+    makeInvincible(){
+        if(!this.isInvincible){
+            this.isInvincible = true
+            this.isInvincibleInterval = setInterval(() => {
+                this.isVisible = !this.isVisible;
+            }, 200)
+            
+            setTimeout(() => {
+                clearInterval(this.isInvincibleInterval)
+                this.isInvincible = false
+                this.isVisible = true
+            }, this.invincibleDuration)
+        }
     }
 }
 
