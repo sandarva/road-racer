@@ -60,6 +60,15 @@ function animate(){
         if(enemy.y > canvas.height){
             removeObject(enemyIndex, ENEMIES)
         }
+
+        BULLETS.forEach((bullet, bulletIndex) => {
+            if(checkCollision(bullet, enemy)){
+                removeObject(enemyIndex, ENEMIES)
+                removeObject(bulletIndex, BULLETS)
+                increaseScore()
+                console.log(SCORE);
+            }
+        })
     })
 
     /**
@@ -88,6 +97,14 @@ function animate(){
     for(let i = car.health; i < MAX_HEALTH; i++){
         healthBar[i].draw(heartEmptyImg)
     }
+    
+    BULLETS.forEach((bullet, bulletIndex) => {
+        bullet.shoot()
+
+        if(bullet.y < 0){
+            removeObject(bullet, BULLETS)
+        }
+    })
 }
 
 let gameState = "running"

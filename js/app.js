@@ -19,6 +19,10 @@ addEventListener('keydown', (event) => {
     if((event.code === 'ArrowDown' || event.code === 'KeyS') && gameState === 'running'){
         car.moveDown()
     }
+
+    if((event.code === 'Space' || event.code === 'KeyJ') && gameState === 'running'){
+        generateBullet()
+    }
 })
 
 // Event Listener to see if the player is released the movement keys

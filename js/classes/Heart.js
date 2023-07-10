@@ -11,8 +11,9 @@ class Heart{
     }
 }
 
+const gap = 60
 const healthBar = [
-    new Heart(canvas1.width - 240, 20, 50, 50), 
-    new Heart(canvas1.width - 160, 20, 50, 50), 
-    new Heart(canvas1.width - 80, 20, 50, 50)
+    new Heart(canvas1.width - gap*3, 20, 50, 50), 
+    new Heart(canvas1.width - gap*2, 20, 50, 50), 
+    new Heart(canvas1.width - gap, 20, 50, 50)
 ]

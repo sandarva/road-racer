@@ -70,6 +70,16 @@ function generateCoins(){
     }, 5000)
 }
 
+let BULLETS = []
+function generateBullet(){
+    const bullet = new Bullet(car.x + 2, car.y - 5, 30, 30)
+    BULLETS.push(bullet)
+}
+
+function increaseScore(){
+    SCORE += 5
+}
+
 /**
  * This function halts the game
  */

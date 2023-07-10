@@ -43,3 +43,6 @@ heartFullImg.src = './assets/images/heart-full.png'
 
 const heartEmptyImg = new Image()
 heartEmptyImg.src = './assets/images/heart-empty.png'
+
+const bulletImg = new Image()
+bulletImg.src = './assets/images/bullet.png'
