@@ -18,7 +18,9 @@ function animate(){
      **/
     if(
         checkCollision(car, sideBarLeft) || 
-        checkCollision(car, sideBarRight)
+        checkCollision(car, sideBarRight) ||
+        car.y + car.height > canvas.height ||
+        car.y < 0
     ){
         car.decreaseHealth()
         console.log("health: ", car.health);

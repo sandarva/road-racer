@@ -21,9 +21,7 @@ function checkCollision(object1, object2) {
 
 // This function removes the obejcts from the array
 function removeObject(objectIndex, objectArr){
-    setTimeout(() => {
-        objectArr.splice(objectIndex, 1)
-    }, 0)
+    objectArr.splice(objectIndex, 1)
 }
 
 const totalRoadWidth = (canvas.width - (sideBarLeft.width + sideBarRight.width))
