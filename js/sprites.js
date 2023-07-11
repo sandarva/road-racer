@@ -55,3 +55,21 @@ obstacleImg.src = './assets/images/obstacle.png'
 // Background Image
 const bgImage = new Image()
 bgImage.src = './assets/images/bgcanvas.jpg'
+
+const intro = new Audio()
+intro.src = './assets/audios/intro.wav'
+
+const crash = new Audio()
+crash.src = './assets/audios/crash.wav'
+
+const bulletHit = new Audio()
+bulletHit.src = './assets/audios/bullet-hit.wav'
+
+const coinSound = new Audio()
+coinSound.src = './assets/audios/coin.wav'
+
+const gameOverSound = new Audio()
+gameOverSound.src = './assets/audios/gameover.wav'
+
+const bulletSound = new Audio()
+bulletSound.src = './assets/audios/bullet.wav'

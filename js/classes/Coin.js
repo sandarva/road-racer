@@ -35,7 +35,6 @@ class Coin{
 
     // This method increase the point according to the coin variant
     increasePoints(){
-        console.log("score: ", SCORE);
         SCORE += this.points
     }
 

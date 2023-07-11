@@ -35,6 +35,8 @@ addEventListener('keydown', (event) => {
     // hit with bullet
     if((event.code === 'Space' || event.code === 'KeyJ') && gameState === 'running'){
         generateBullet()
+        bulletSound.play()
+        bulletSound.currentTime = 0
     }
 
     // pause the game
@@ -43,7 +45,7 @@ addEventListener('keydown', (event) => {
     }
 
     // restart the game
-    if(event.code === 'KeyR' && gameState === 'running'){
+    if(event.code === 'KeyR' && (gameState === 'running' || gameState === 'gameover')){
         restartGame()
     }
 
@@ -105,7 +107,6 @@ canvas1.addEventListener("click", function(event) {
     } else if (pauseButton.isClicked(mouseX, mouseY) && gameState === 'running') {
         pauseGame()
     } else if (helpButton.isClicked(mouseX, mouseY) && gameState !== 'running') {
-        console.log(gameState)
         help.classList.remove('display-none')
     }
 });

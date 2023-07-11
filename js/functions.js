@@ -75,7 +75,7 @@ function generateBullet(){
 
 // This function generates obstacles and push into obstacle array
 function generateObstacle(){
-    obstacleIntervalId1 = setInterval(() => {
+    obstacleIntervalId = setInterval(() => {
         const firstLane = 15
         const secondLane = 120
         const allXBlock = [
@@ -113,6 +113,7 @@ function gameOver(){
     clearInterval(enemyIntervalId1)
     clearInterval(enemyIntervalId2)
     cancelAnimationFrame(animationId)
+    gameOverSound.play()
 
     context.font = '32px cursive'
     context.fillStyle = 'white'
@@ -152,6 +153,7 @@ function init(){
     clearInterval(coinIntervalId)
     clearInterval(enemyIntervalId1)
     clearInterval(enemyIntervalId2)
+    clearInterval(obstacleIntervalId)
 
     SCORE = 0
     ENEMIES = []
@@ -201,6 +203,7 @@ function preGameAnimation(){
     }
 
     displayTitle()
+    intro.play()
 }
 
 function displayHighScore(){

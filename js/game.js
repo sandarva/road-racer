@@ -28,10 +28,12 @@ function animate(){
         car.y < 0
     ){
         car.decreaseHealth()
-        // console.log("health: ", car.health);
-        // console.log("lives: ", car.lives);
         car.sendToInitalPos()
         car.makeInvincible()
+        if(car.isInvincible){
+            crash.play()
+            crash.currentTime = 0
+        }
     }
 
     // if the health of the car decreases to 0 decrease life by 1
@@ -55,10 +57,12 @@ function animate(){
         // collision detection for enemies and player
         if(checkCollision(car, enemy)){
             car.decreaseHealth()
-            // console.log("health: ", car.health);
-            // console.log("lives: ", car.lives);
             car.sendToInitalPos()
             car.makeInvincible()
+            if(car.isInvincible){
+                crash.play()
+                crash.currentTime = 0
+            }
         }
 
         // remove the enemy if it is outside the screen(canvas)
@@ -70,6 +74,8 @@ function animate(){
             if(checkCollision(bullet, enemy)){
                 removeObject(enemyIndex, ENEMIES)
                 removeObject(bulletIndex, BULLETS)
+                bulletHit.play()
+                bulletHit.currentTime = 0
                 increaseScore()
             }
         })
@@ -87,6 +93,7 @@ function animate(){
         // collision detection for enemies and player
         if(checkCollision(car, obstacle) && !car.isInvincible){
             gameOver()
+            crash.play()
         }
 
         // remove the enemy if it is outside the screen(canvas)
@@ -104,6 +111,8 @@ function animate(){
 
         if(checkCollision(car, coin)){
             coin.increasePoints()
+            coinSound.play()
+            coinSound.currentTime = 0
             removeObject(coinIndex, COINS)
         }
 
@@ -138,6 +147,12 @@ function animate(){
     displayLives()
     displayScore()
     displayHighScore()
+    if(gameState === 'running'){
+        intro.play()
+    }else{
+        intro.pause()
+        intro.currentTime = 0
+    }
 }
 
 let gameState = "initial-game"

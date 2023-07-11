@@ -22,6 +22,7 @@ let OBSTACLES = []
 let animationId
 let enemyIntervalId1, enemyIntervalId2
 let coinIntervalId
+let obstacleIntervalId
 let preAnimationId
 
 // Constants
