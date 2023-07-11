@@ -199,6 +199,8 @@ function preGameAnimation(){
     if(gameState === 'running'){
         cancelAnimationFrame(preAnimationId)
     }
+
+    displayTitle()
 }
 
 function displayHighScore(){
@@ -215,5 +217,17 @@ function displayHighScore(){
 function displayLives(){
     context1.font = '24px cursive'
     context1.fillStyle = 'white' 
-    context1.fillText(`LIVES: ${car.lives}`, 20, canvas.height - 90 - 24);
+    context1.fillText(`LIVES: ${car.lives}`, 20, canvas.height - 60);
+    context1.fillText(`HEALTH: `, 20, 55);
+}
+
+// THis function displays the game title in pre game Animation
+function displayTitle(){
+    context.font = '60px cursive'
+    context.fillStyle = 'white'
+    const textWidth = context.measureText('ROAD RACER').width  
+    context.fillText(`ROAD RACER`, (canvas.width / 2) - (textWidth / 2), canvas.height / 2);
+    context.font = '24px cursive'
+    const textWidth1 = context.measureText('Press Space to start the game!!').width  
+    context.fillText(`PRESS SPACE TO START THE GAME!!`, (canvas.width / 2) - (textWidth1 / 2) - 40, canvas.height / 2 + 45);
 }

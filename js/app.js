@@ -104,7 +104,8 @@ canvas1.addEventListener("click", function(event) {
         restartGame()
     } else if (pauseButton.isClicked(mouseX, mouseY) && gameState === 'running') {
         pauseGame()
-    } else if (helpButton.isClicked(mouseX, mouseY)) {
+    } else if (helpButton.isClicked(mouseX, mouseY) && gameState !== 'running') {
+        console.log(gameState)
         help.classList.remove('display-none')
     }
 });
